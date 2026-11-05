@@ -17,7 +17,9 @@
     "icon.svg",
     "assets/*.png",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "README.zh.md",
+    "screenshots.json"
   ],
   "icon": "icon.svg",
   "dsh": {
@@ -42,5 +44,14 @@
     "opencode-go",
     "usage",
     "quota"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jfreey/dsh-opencode-go-usage.git"
+  },
+  "homepage": "https://github.com/Jfreey/dsh-opencode-go-usage#readme",
+  "bugs": {
+    "url": "https://github.com/Jfreey/dsh-opencode-go-usage/issues"
+  },
+  "author": "Jfreey"
 }
