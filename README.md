@@ -18,7 +18,8 @@ no dependencies, no build step.
 - **Hover, click or focus** opens a panel with all three allowances: one bar each,
   used percentage, reset countdown, a manual refresh, and the bar / level / rotation
   controls. Changes are saved in the browser.
-- **Settings → OpenCode Go** — three cards, cache-first, refreshed on demand.
+- **Settings → OpenCode Go** — three cards. Opening it reuses the cache instead of
+  querying again, then it refreshes every 60s; the button is there for an immediate read.
 - **Bilingual** — the UI follows the Harness app language (Chinese and English
   dictionaries are both registered).
 
@@ -70,7 +71,8 @@ the bundle).
 | Dock pill | `GET /dsh-opencode-go/usage` | Every 60s; served from the host cache while it is fresh |
 | Panel "Refresh" | `GET …?refresh=1` | Skips the cache, queries upstream |
 | Settings opened | `GET …?cache=1` | Uses whatever is cached, even if old; queries only when nothing was cached |
-| Settings "Refresh" | `GET …?refresh=1` | Queries upstream |
+| Settings open | `GET /dsh-opencode-go/usage` | Every 60s, same rhythm as the dock |
+| Settings "Refresh" | `GET …?refresh=1` | Queries upstream immediately |
 
 A credential change (`credentials/reference-updated`) drops the cache, so a new key
 is read on the next request instead of showing the previous account's numbers.

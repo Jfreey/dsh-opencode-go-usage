@@ -45,7 +45,7 @@ window.__ModuleLoader__.load({
       levelLabel: '级别',
       showBar: '进度条',
       rotateLabel: '滚动',
-      manualRefreshNote: '打开此页不重新查询，需要时手动刷新',
+      manualRefreshNote: '打开时先读缓存，之后每 60 秒自动刷新',
       openConsole: '打开 Console',
       errorTitle: '读不到用量',
       retry: '重试',
@@ -86,7 +86,7 @@ window.__ModuleLoader__.load({
       levelLabel: 'Level',
       showBar: 'Bar',
       rotateLabel: 'Rotate',
-      manualRefreshNote: 'Opening this page reuses the cache — refresh when you need a new reading',
+      manualRefreshNote: 'Opens from the cache, then refreshes every 60s',
       openConsole: 'Open Console',
       errorTitle: "Couldn't read usage",
       retry: 'Retry',
@@ -708,7 +708,7 @@ window.__ModuleLoader__.load({
     /** The Settings page: cache-first, manual refresh, no background polling. */
     function UsageSection(props) {
       const t = props.t
-      const { state, reload } = useUsage({ cacheOnly: true, poll: false })
+      const { state, reload, now } = useUsage({ cacheOnly: true, poll: true })
       const [display, updateDisplay] = useDisplayPrefs(state.display ?? {})
 
       const head = h(
@@ -806,7 +806,7 @@ window.__ModuleLoader__.load({
                   style: { width: `${Math.min(100, Math.max(0, percent))}%`, background: levelColor(percent) },
                 }),
               ),
-              h('div', { className: 'og-go-card__hint' }, resetHint(meter ?? {}, t, Date.now())),
+              h('div', { className: 'og-go-card__hint' }, resetHint(meter ?? {}, t, now)),
             )
           }),
         ),
