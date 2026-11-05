@@ -1,0 +1,46 @@
+{
+  "name": "dsh-opencode-go-usage",
+  "version": "1.0.0",
+  "description": "OpenCode Go plan usage (5-hour, weekly, monthly allowance) in the DeepSeek Harness composer dock and Settings.",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "assets/*.png",
+    "LICENSE",
+    "README.md"
+  ],
+  "icon": "icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "opencode",
+    "opencode-go",
+    "usage",
+    "quota"
+  ]
+}

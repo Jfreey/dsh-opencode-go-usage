@@ -1,0 +1,21 @@
+# OpenCode Go usage bundle: one Host row that reads the allowance from
+# opencode.ai with the key the Models page already stored, and one Client
+# module that renders it in the composer dock and on a Settings page.
+- insert:
+    - id: opencode-go-usage
+      name: 'dsh-opencode-go-usage'
+      config:
+        # Credential reference, not the secret itself: the same reference the
+        # llm-pi-ai `opencode-go` provider resolves (see the profile patch).
+        apiKeyEnv: OPENCODE_GO_API_KEY
+
+        # 对话框底栏的用量指示：总开关、进度条、默认级别（rolling|weekly|monthly）
+        dock: true
+        bar: true
+        level: rolling
+        # 级别轮换显示，默认关闭；开启后每 rotateSeconds 秒切一级
+        rotate: false
+        rotateSeconds: 5
+
+        # 宿主侧缓存秒数：底栏每 60 秒刷新一次读数，设置页只读缓存、手动刷新
+        cacheSeconds: 60
